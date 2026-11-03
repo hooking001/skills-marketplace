@@ -1,0 +1,14 @@
+{
+  "name": "hooking001-skills",
+  "owner": {
+    "name": "hooking001"
+  },
+  "description": "Personal skills for Claude Code and Codex",
+  "plugins": [
+    {
+      "name": "serena-onboarding",
+      "source": "./plugins/serena-onboarding",
+      "description": "Onboard or refresh projects in Serena with evidence-backed code maps and execution flows."
+    }
+  ]
+}

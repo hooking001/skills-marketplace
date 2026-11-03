@@ -1,0 +1,9 @@
+{
+  "name": "serena-onboarding",
+  "version": "0.1.0",
+  "description": "Onboard or refresh projects in Serena with evidence-backed code maps, execution flows, and change/test navigation.",
+  "author": {
+    "name": "hooking001"
+  },
+  "skills": "./skills/"
+}
