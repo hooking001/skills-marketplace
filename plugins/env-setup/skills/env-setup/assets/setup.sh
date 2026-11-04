@@ -26,6 +26,12 @@ else
     fi
 fi
 
+if command -v herdr >/dev/null 2>&1; then
+    echo "Installing herdr integrations for codex and claude..."
+    herdr integration install codex || true
+    herdr integration install claude || true
+fi
+
 echo ""
 echo "=== [2/4] Installing rtk (Rust Token Killer) ==="
 if command -v rtk >/dev/null 2>&1; then

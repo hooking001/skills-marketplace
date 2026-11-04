@@ -43,6 +43,10 @@ command -v herdr || curl -fsSL https://herdr.dev/install.sh | sh
 
 # 정상 설치 확인
 herdr --version
+
+# Codex 및 Claude 연동 인터그레이션 설치
+herdr integration install codex
+herdr integration install claude
 ```
 
 ### 2. rtk (Rust Token Killer) 설치 및 에이전트 연동
