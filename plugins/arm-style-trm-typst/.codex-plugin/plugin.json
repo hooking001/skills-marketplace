@@ -1,7 +1,7 @@
 {
   "name": "arm-style-trm-typst",
-  "version": "0.1.0",
-  "description": "ARM-style bilingual technical manuals with Typst. SKILL.md only; required template, scripts and font assets are not yet supplied.",
+  "version": "0.2.0",
+  "description": "ARM-style bilingual technical manuals with Typst, including complete template, scripts, references, tests, and Pretendard font assets.",
   "author": {
     "name": "hooking001"
   },
@@ -9,7 +9,7 @@
   "interface": {
     "displayName": "ARM Style TRM (Typst)",
     "shortDescription": "ARM-style Typst technical manual instructions",
-    "longDescription": "ARM-style bilingual technical manuals with Typst. SKILL.md only; required template, scripts and font assets are not yet supplied.",
+    "longDescription": "ARM-style bilingual technical manuals with Typst, including complete template, scripts, references, tests, and Pretendard font assets.",
     "developerName": "hooking001",
     "category": "Productivity",
     "defaultPrompt": [

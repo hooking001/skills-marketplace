@@ -1,0 +1,22 @@
+#import "/template/lib.typ": *
+#show: arm-doc.with(
+  doc-info: (title: "Delta Base Test", doc-id: "BASE-01"),
+  paper: "arm-letter",
+  recto: false,
+)
+#contents-page()
+#list-of-tables()
+
+#set heading(numbering: arm-heading-numbering)
+= Part A <part-a>
+== Chapter A1 <ch-a1>
+=== Section A1.1 <sec-a1-1>
+Reference to target table: #arm-ref(<tbl-target>, form: "full")
+
+== Chapter A2 <ch-a2>
+=== Section A2.1 <sec-a2-1>
+#arm-table(
+  table(columns: 2, [Col A], [Col B]),
+  caption: [Target Delta Table],
+  label: <tbl-target>,
+)

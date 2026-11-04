@@ -13,7 +13,7 @@
     {
       "name": "arm-style-trm-typst",
       "source": "./plugins/arm-style-trm-typst",
-      "description": "ARM-style bilingual technical manuals with Typst. SKILL.md only; required template, scripts and font assets are not yet supplied."
+      "description": "ARM-style bilingual technical manuals with Typst, including complete template, scripts, references, tests, and Pretendard font assets."
     }
   ]
 }
