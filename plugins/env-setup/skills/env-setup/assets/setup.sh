@@ -2,11 +2,11 @@
 set -euo pipefail
 
 # Environment setup script for AI coding agents
-# Installs herdr, rtk, effortless (conditional), and configures Serena MCP
+# Installs herdr, effortless (conditional), and configures Serena MCP
 
 export PATH="${HOME}/.local/bin:${HOME}/.cargo/bin:${PATH}"
 
-echo "=== [1/4] Installing herdr ==="
+echo "=== [1/3] Installing herdr ==="
 if command -v herdr >/dev/null 2>&1; then
     echo "✓ herdr is already installed: $(herdr --version 2>/dev/null || echo 'installed')"
 else
@@ -33,40 +33,7 @@ if command -v herdr >/dev/null 2>&1; then
 fi
 
 echo ""
-echo "=== [2/4] Installing rtk (Rust Token Killer) ==="
-if command -v rtk >/dev/null 2>&1; then
-    echo "✓ rtk is already installed: $(rtk --version 2>/dev/null || echo 'installed')"
-else
-    echo "Installing rtk via install.sh..."
-    if curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/master/install.sh | sh; then
-        echo "✓ rtk installed successfully."
-    elif command -v brew >/dev/null 2>&1; then
-        echo "Install script failed; trying brew install rtk-ai/tap/rtk..."
-        brew install rtk-ai/tap/rtk
-        echo "✓ rtk installed via brew."
-    elif command -v cargo >/dev/null 2>&1; then
-        echo "Install script failed; trying cargo install..."
-        cargo install --git https://github.com/rtk-ai/rtk --branch master rtk
-        echo "✓ rtk installed via cargo."
-    else
-        echo "⚠ Failed to install rtk. Please check network or install manually."
-    fi
-fi
-
-# Configure rtk for available agents
-if command -v rtk >/dev/null 2>&1; then
-    if command -v claude >/dev/null 2>&1; then
-        echo "Configuring rtk for Claude Code..."
-        rtk init -g || true
-    fi
-    if command -v codex >/dev/null 2>&1; then
-        echo "Configuring rtk for Codex..."
-        rtk init -g --codex || true
-    fi
-fi
-
-echo ""
-echo "=== [3/4] Installing effortless plugin (Claude Code) ==="
+echo "=== [2/3] Installing effortless plugin (Claude Code) ==="
 if command -v claude >/dev/null 2>&1; then
     echo "✓ claude binary found at $(command -v claude)."
     echo "Adding marketplace HeyCubit/effortless..."
@@ -79,7 +46,7 @@ else
 fi
 
 echo ""
-echo "=== [4/4] Configuring Serena MCP ==="
+echo "=== [3/3] Configuring Serena MCP ==="
 # Ensure uv is installed
 if ! command -v uv >/dev/null 2>&1; then
     echo "uv not found; installing uv..."

@@ -10,9 +10,9 @@ Claude Code와 Codex에서 공용으로 사용하는 개인 스킬 마켓플레�
 | --- | --- | --- |
 | `serena-onboarding` | `0.1.0` | 근거가 있는 코드 맵, 실행 흐름, 변경 가이드, 한국어 메모리와 캐시 검사 도구를 포함한 Serena 프로젝트 온보딩·갱신 |
 | `arm-style-trm-typst` | `0.2.0` | ARM 형식 Typst 기술 매뉴얼 지침 (`typst-arm-manual`); 템플릿, 스크립트, 참고문서, 테스트 fixture, Pretendard 폰트 자산 전체 포함 |
-| `env-setup` | `0.1.0` | herdr, rtk, effortless (Claude 존재 시), Serena MCP 연결을 포함한 AI 코딩 환경 자동 구성 |
+| `env-setup` | `0.1.0` | herdr (codex/claude 연동), effortless (Claude 존재 시), Serena MCP 연결을 포함한 AI 코딩 환경 자동 구성 |
 
-- **환경 구성 (`env-setup`)**: 터미널 에이전트 멀티플렉서 `herdr` 및 토큰 절약 프록시 `rtk`를 설치·연동하고, `claude` 바이너리가 존재하는 경우 `effortless` 플러그인을 설치하며, Claude Code와 Codex에 Serena MCP 서버를 연결합니다.
+- **환경 구성 (`env-setup`)**: 터미널 에이전트 멀티플렉서 `herdr`를 설치하고 `codex`, `claude` 인터그레이션을 연동하며, `claude` 바이너리가 존재하는 경우 `effortless` 플러그인을 설치하고, Claude Code와 Codex에 Serena MCP 서버를 연결합니다.
 - **Serena 온보딩**: Serena MCP를 대상 도구에 미리 연결해야 합니다. 언어별 분석에는 해당 language server가 필요하며, 인덱싱에는 설치된 Serena CLI를 사용합니다. 이 플러그인은 Serena나 language server를 자동 설치하지 않습니다. 스킬을 실행하면 대상 프로젝트의 `.serena/` 파일과 이를 제외하는 `.gitignore` 규칙을 생성하거나 갱신할 수 있습니다.
 - **ARM 기술 매뉴얼**: 템플릿, `manual.py` 자동화 스크립트, Pretendard 글꼴, 회귀 테스트 fixture 등 문서 작성·빌드·검사에 필요한 자산이 `assets/`에 온전히 포함되어 있습니다.
 

@@ -18,7 +18,7 @@
     {
       "name": "env-setup",
       "source": "./plugins/env-setup",
-      "description": "Setup developer environment: install herdr, rtk, effortless (if Claude binary exists), and configure Serena MCP."
+      "description": "Setup developer environment: install herdr (with codex/claude integration), effortless (if Claude binary exists), and configure Serena MCP."
     }
   ]
 }
