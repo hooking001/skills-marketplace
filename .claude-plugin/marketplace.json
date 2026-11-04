@@ -8,17 +8,55 @@
     {
       "name": "serena-onboarding",
       "source": "./plugins/serena-onboarding",
-      "description": "Onboard or refresh projects in Serena with evidence-backed code maps and execution flows."
+      "description": "Onboard or refresh projects in Serena with evidence-backed code maps, execution flows, and change/test navigation.",
+      "version": "0.1.0",
+      "author": {
+        "name": "hooking001"
+      },
+      "category": "Productivity",
+      "interface": {
+        "displayName": "Serena Onboarding",
+        "shortDescription": "Evidence-backed Serena project onboarding",
+        "longDescription": "Build connected code maps, execution flows, change guides, Korean memory counterparts, and cache inspection helpers for Serena projects.",
+        "defaultPrompt": [
+          "Use serena-onboarding to onboard or refresh this project in Serena."
+        ]
+      }
     },
     {
       "name": "arm-style-trm-typst",
       "source": "./plugins/arm-style-trm-typst",
-      "description": "ARM-style bilingual technical manuals with Typst, including complete template, scripts, references, tests, and Pretendard font assets."
+      "description": "ARM-style bilingual technical manuals with Typst, including complete template, scripts, references, tests, and Pretendard font assets.",
+      "version": "0.2.0",
+      "author": {
+        "name": "hooking001"
+      },
+      "license": "OFL-1.1",
+      "category": "Productivity",
+      "interface": {
+        "displayName": "ARM Style TRM (Typst)",
+        "shortDescription": "ARM-style Typst technical manual instructions",
+        "defaultPrompt": [
+          "Use typst-arm-manual to write or update this technical manual."
+        ]
+      }
     },
     {
       "name": "env-setup",
       "source": "./plugins/env-setup",
-      "description": "Setup developer environment: install herdr (with codex/claude integration), effortless (if Claude binary exists), and configure Serena MCP."
+      "description": "Developer environment setup: install herdr (with codex/claude integration), effortless (if Claude binary exists), and connect Serena MCP.",
+      "version": "0.1.0",
+      "author": {
+        "name": "hooking001"
+      },
+      "category": "Development",
+      "interface": {
+        "displayName": "Environment Setup",
+        "shortDescription": "Setup herdr, effortless, and Serena MCP",
+        "defaultPrompt": [
+          "Run env-setup to install herdr, effortless (if claude is present), and connect Serena MCP."
+        ]
+      }
     }
   ]
 }
