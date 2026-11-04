@@ -1,0 +1,9 @@
+{
+  "name": "env-setup",
+  "version": "0.1.0",
+  "description": "Developer environment setup: install herdr, rtk, effortless (if Claude binary exists), and connect Serena MCP.",
+  "author": {
+    "name": "hooking001"
+  },
+  "skills": "./skills/"
+}

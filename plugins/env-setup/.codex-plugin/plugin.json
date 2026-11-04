@@ -1,0 +1,19 @@
+{
+  "name": "env-setup",
+  "version": "0.1.0",
+  "description": "Developer environment setup: install herdr, rtk, effortless (if Claude binary exists), and connect Serena MCP.",
+  "author": {
+    "name": "hooking001"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Environment Setup",
+    "shortDescription": "Setup herdr, rtk, effortless, and Serena MCP",
+    "longDescription": "Developer environment setup: install herdr, rtk, effortless (if Claude binary exists), and connect Serena MCP.",
+    "developerName": "hooking001",
+    "category": "Development",
+    "defaultPrompt": [
+      "Run env-setup to install herdr, rtk, effortless (if claude is present), and connect Serena MCP."
+    ]
+  }
+}
