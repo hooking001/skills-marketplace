@@ -1,0 +1,9 @@
+{
+  "name": "arm-style-trm-typst",
+  "version": "0.1.0",
+  "description": "ARM-style bilingual technical manuals with Typst. SKILL.md only; required template, scripts and font assets are not yet supplied.",
+  "author": {
+    "name": "hooking001"
+  },
+  "skills": "./skills/"
+}

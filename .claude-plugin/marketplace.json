@@ -9,6 +9,11 @@
       "name": "serena-onboarding",
       "source": "./plugins/serena-onboarding",
       "description": "Onboard or refresh projects in Serena with evidence-backed code maps and execution flows."
+    },
+    {
+      "name": "arm-style-trm-typst",
+      "source": "./plugins/arm-style-trm-typst",
+      "description": "ARM-style bilingual technical manuals with Typst. SKILL.md only; required template, scripts and font assets are not yet supplied."
     }
   ]
 }

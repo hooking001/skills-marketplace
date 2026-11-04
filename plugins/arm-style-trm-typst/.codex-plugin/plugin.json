@@ -1,0 +1,19 @@
+{
+  "name": "arm-style-trm-typst",
+  "version": "0.1.0",
+  "description": "ARM-style bilingual technical manuals with Typst. SKILL.md only; required template, scripts and font assets are not yet supplied.",
+  "author": {
+    "name": "hooking001"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "ARM Style TRM (Typst)",
+    "shortDescription": "ARM-style Typst technical manual instructions",
+    "longDescription": "ARM-style bilingual technical manuals with Typst. SKILL.md only; required template, scripts and font assets are not yet supplied.",
+    "developerName": "hooking001",
+    "category": "Productivity",
+    "defaultPrompt": [
+      "Use typst-arm-manual to write or update this technical manual."
+    ]
+  }
+}
