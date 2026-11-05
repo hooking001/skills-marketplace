@@ -62,7 +62,7 @@
       "name": "cross-review",
       "source": "./plugins/cross-review",
       "description": "Evidence-based review of architecture, RTL, and software modules after confirming target classification, scope, and Codex-only or Codex + agy reviewers.",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "author": {
         "name": "hooking001"
       },

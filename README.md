@@ -15,6 +15,7 @@ Claude Code와 Codex에서 함께 사용하는 개인 스킬 모음입니다.
 
 - `serena-onboarding`은 Serena MCP, Serena CLI, 언어별 language server가 필요합니다. 실행 시 프로젝트의 `.serena/`와 `.gitignore`를 생성하거나 갱신합니다.
 - `env-setup`은 Claude Code가 설치되어 있으면 `effortless` 플러그인도 설치합니다.
+- `cross-review`는 agy의 최근 5분 진행 diff가 있으면 계속 대기합니다. 종료 시 최초 실행 디렉터리에 `cross-review-report-YYYYMMDD-HHMMSS.md`를 저장하고, 저장한 보고서를 다시 읽어 결과를 요약합니다.
 
 ## 설치
 
