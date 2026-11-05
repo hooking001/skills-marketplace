@@ -8,14 +8,14 @@ Claude Code와 Codex에서 함께 사용하는 개인 스킬 모음입니다.
 | --- | --- |
 | `serena-onboarding` | 프로젝트 구조와 실행 흐름을 분석해 Serena 메모리 작성·갱신 |
 | `arm-style-trm-typst` | Typst로 ARM 형식 기술 매뉴얼 작성·빌드 |
-| `cross-review` | 대상 성격·범위를 확인한 뒤 문서·RTL·소스를 비판적으로 검토(Codex only / Codex + agy 선택) |
+| `cross-review` | 선택형 질문으로 범위·리뷰어 확인 후 독립 리뷰·상호 검토·최종 판정(Codex only / Codex + agy) |
 | `env-setup` | herdr 설치, codex/claude 연동, Serena MCP 설정 |
 
 플러그인 버전은 `.claude-plugin/marketplace.json`의 각 항목 `version`에서 관리합니다.
 
 - `serena-onboarding`은 Serena MCP, Serena CLI, 언어별 language server가 필요합니다. 실행 시 프로젝트의 `.serena/`와 `.gitignore`를 생성하거나 갱신합니다.
 - `env-setup`은 Claude Code가 설치되어 있으면 `effortless` 플러그인도 설치합니다.
-- `cross-review`는 agy의 최근 5분 진행 diff가 있으면 계속 대기합니다. 종료 시 최초 실행 디렉터리에 `cross-review-report-YYYYMMDD-HHMMSS.md`를 저장하고, 저장한 보고서를 다시 읽어 결과를 요약합니다.
+- `cross-review`는 Codex + agy에서 독립 리뷰 후 서로의 지적에 동의·비동의와 근거를 제출하고 호스트가 최종 판정합니다. 보고서는 문제 3줄·답변 10줄 이내로 요점을 먼저 표시하며, 작성 AI·model·effort를 병기하고 상세 근거는 기본으로 접습니다. agy의 최근 5분 진행 diff가 있으면 계속 대기합니다. 종료 시 최초 실행 디렉터리에 `cross-review-report-YYYYMMDD-HHMMSS.md`를 저장하고, 저장한 보고서를 다시 읽어 결과를 요약합니다.
 
 ## 설치
 
