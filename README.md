@@ -24,10 +24,7 @@ Claude Code 세션에서 실행
 
 ```text
 /plugin marketplace add https://github.com/hooking001/skills-marketplace.git
-/plugin install serena-onboarding@hooking001-skills
-/plugin install arm-style-trm-typst@hooking001-skills
-/plugin install env-setup@hooking001-skills
-/plugin install cross-review@hooking001-skills
+/plugin install {skills}@hooking001-skills
 ```
 
 새 세션에서 스킬을 실행
@@ -45,10 +42,7 @@ Codex 세션에서 실행
 
 ```text
 !codex plugin marketplace add https://github.com/hooking001/skills-marketplace.git --ref main
-!codex plugin add serena-onboarding@hooking001-skills
-!codex plugin add arm-style-trm-typst@hooking001-skills
-!codex plugin add env-setup@hooking001-skills
-!codex plugin add cross-review@hooking001-skills
+!codex plugin add {skills}@hooking001-skills
 ```
 
 새 세션에서 스킬 실행.
