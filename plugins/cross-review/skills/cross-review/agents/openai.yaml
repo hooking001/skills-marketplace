@@ -1,0 +1,4 @@
+interface:
+  display_name: "Cross Review"
+  short_description: "대상 성격과 범위를 확인한 뒤 문서·소스·테스트를 대조하는 비판적 리뷰"
+  default_prompt: "$cross-review 지정 기능이나 디렉터리의 성격과 범위를 먼저 확인하고, 리뷰어를 선택받아 비판적으로 리뷰해줘."

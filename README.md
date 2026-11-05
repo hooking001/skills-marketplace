@@ -8,6 +8,7 @@ Claude Code와 Codex에서 함께 사용하는 개인 스킬 모음입니다.
 | --- | --- |
 | `serena-onboarding` | 프로젝트 구조와 실행 흐름을 분석해 Serena 메모리 작성·갱신 |
 | `arm-style-trm-typst` | Typst로 ARM 형식 기술 매뉴얼 작성·빌드 |
+| `cross-review` | 대상 성격·범위를 확인한 뒤 문서·RTL·소스를 비판적으로 검토(Codex only / Codex + agy 선택) |
 | `env-setup` | herdr 설치, codex/claude 연동, Serena MCP 설정 |
 
 플러그인 버전은 `.claude-plugin/marketplace.json`의 각 항목 `version`에서 관리합니다.
@@ -26,6 +27,7 @@ Claude Code 세션에서 실행
 /plugin install serena-onboarding@hooking001-skills
 /plugin install arm-style-trm-typst@hooking001-skills
 /plugin install env-setup@hooking001-skills
+/plugin install cross-review@hooking001-skills
 ```
 
 새 세션에서 스킬을 실행
@@ -34,6 +36,7 @@ Claude Code 세션에서 실행
 /serena-onboarding:serena-onboarding
 /arm-style-trm-typst:typst-arm-manual
 /env-setup:env-setup
+/cross-review:cross-review
 ```
 
 ### Codex
@@ -45,6 +48,7 @@ Codex 세션에서 실행
 !codex plugin add serena-onboarding@hooking001-skills
 !codex plugin add arm-style-trm-typst@hooking001-skills
 !codex plugin add env-setup@hooking001-skills
+!codex plugin add cross-review@hooking001-skills
 ```
 
 새 세션에서 스킬 실행.
@@ -53,6 +57,7 @@ Codex 세션에서 실행
 $serena-onboarding
 $typst-arm-manual
 $env-setup
+$cross-review
 ```
 
 ## 구조

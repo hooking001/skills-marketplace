@@ -57,6 +57,23 @@
           "Run env-setup to install herdr, effortless (if claude is present), and connect Serena MCP."
         ]
       }
+    },
+    {
+      "name": "cross-review",
+      "source": "./plugins/cross-review",
+      "description": "Evidence-based review of architecture, RTL, and software modules after confirming target classification, scope, and Codex-only or Codex + agy reviewers.",
+      "version": "0.1.0",
+      "author": {
+        "name": "hooking001"
+      },
+      "category": "Development",
+      "interface": {
+        "displayName": "Cross Review",
+        "shortDescription": "Confirm scope, then critically review docs and code",
+        "defaultPrompt": [
+          "Use cross-review to identify this target, confirm its classification and reviewers, then critically review its documentation and implementation."
+        ]
+      }
     }
   ]
 }
