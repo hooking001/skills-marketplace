@@ -3,7 +3,7 @@
 ## 사전 상태 확인
 
 - `command -v codex`, `command -v agy`로 설치 여부를 확인하고, 해당 CLI의 `--help`에서 현재 지원 옵션을 확인한다. 실행 파일명만으로 로그인 상태를 단정하지 않는다.
-- Codex 호스트는 진행 관리·최종 판정을 맡는다. 독립 Codex 리뷰는 subagent에 위임하며, subagent를 사용할 수 없으면 read-only Codex CLI의 가용성을 확인한다. CLI가 필요할 때만 `codex login status` 등 설치된 버전이 제공하는 인증 확인 명령을 확인한다.
+- Codex 호스트는 진행 관리·최종 판정을 맡는다. 호스트의 model 및 reasoning effort는 `~/.codex/config.toml`의 `model` 및 `model_reasoning_effort` 설정값을 읽어 확인한다(예: `model = "gpt-6.1-sol"`, `model_reasoning_effort = "medium"`). 독립 Codex 리뷰는 subagent에 위임하며, subagent는 호스트 설정을 상속하므로 동일한 model·effort를 기록한다. subagent를 사용할 수 없으면 read-only Codex CLI의 가용성을 확인한다. CLI가 필요할 때만 `codex login status` 등 설치된 버전이 제공하는 인증 확인 명령을 확인한다.
 - agy는 버전에 따라 auth/status 명령이 없을 수 있다. `agy models` 조회 성공은 조회 가능 상태로만 보고한다. 인증이 확인되지 않으면 `미확인`으로 표시한다. 토큰·쿠키·credential 파일을 열거나 출력하지 않는다.
 - 인증 명령이 없어 실제 모델 요청으로 확인해야 한다면 비용과 외부 호출이 생긴다고 알리고 사용자가 연결 테스트를 요청하거나 Codex + agy를 선택한 뒤 수행한다. 프로젝트 밖 임시 작업 디렉터리에서 파일·도구 접근 없이 `OK`만 응답하도록 요청한다. 성공 시 해당 시점의 모델 호출 가능 상태로 보고한다. 로그인 갱신이나 설치는 자동 수행하지 않는다.
 
@@ -21,7 +21,7 @@ Codex + agy 선택은 확인된 대상의 필요한 자료를 추가 서비스�
 
 - Codex CLI가 필요하면 `codex exec --help`를 확인하고 `--sandbox read-only`를 사용한다. 프롬프트 파일을 stdin으로 넘기고 별도 임시 파일로 결과를 받는다.
 - agy는 `agy --help`를 확인하고 지원한다면 `--mode plan --sandbox`를 사용하며 소스·사양 변경 금지를 프롬프트에 명시한다. plan/sandbox가 완전한 읽기 전용 보장인지 단정하지 않는다. 프로젝트 쓰기를 막는 실행 환경이 없으면 임시 디렉터리의 필요한 자료 사본으로 실행하고 사본 밖 프로젝트 접근을 주지 않는다. 복사 범위를 확인하고 symlink가 원본 쓰기 접근을 허용하지 않게 한다.
-- **agy 모델 강제**: agy 호출 시 반드시 `--model gemini-3.8-flash-high`를 명시적으로 지정한다. Claude Opus/Sonnet 등 쿼터가 적거나 고비용인 모델을 선택하거나 CLI 기본값에 맡기지 않고, 항상 Gemini Flash High 모델을 강제하여 429 사용량 한도(RESOURCE_EXHAUSTED) 초과를 방지한다.
+- **agy 모델 및 effort 강제**: agy 호출 시 반드시 `--model gemini-3.8-flash-high --effort high`를 명시적으로 지정한다. Claude Opus/Sonnet 등 쿼터가 적거나 고비용인 모델을 선택하거나 CLI 기본값에 맡기지 않고, 항상 Gemini Flash High 모델과 reasoning effort high를 강제하여 429 사용량 한도(RESOURCE_EXHAUSTED) 초과를 방지한다.
 - **동시 실행 3개 제한**: 시스템 전체에서 한번에 실행되는 agy 프로세스/인스턴스는 **최대 3개**로 제한한다. agy 실행 전 시스템 내 실행 중인 agy 프로세스 수(`pgrep -fc "agy "` 등)를 확인하고, 이미 3개가 실행 중이면 선행 프로세스가 끝날 때까지 대기(큐잉)한 뒤 실행한다.
 - agy에 전달하는 프롬프트에도 자체 서브에이전트(`invoke_subagent`)를 무단으로 과다 분기하여 쿼터를 고갈시키지 않도록 "서브에이전트 병렬 생성은 최대 3개 이하로 제한하거나 단일 에이전트 내에서 직접 순차적으로 파일을 읽어 검토하라"는 명시적 제약을 포함한다.
 - `--dangerously-skip-permissions`나 권한 우회 플래그를 사용하지 않는다. 권한 프롬프트 또는 미지원 기능 때문에 진행이 막히면 원인을 보고하고 필요한 선택을 받는다.
@@ -29,7 +29,7 @@ Codex + agy 선택은 확인된 대상의 필요한 자료를 추가 서비스�
 
 ## 실행 정보와 상호 검토
 
-- 실행 전에 리뷰어별 AI/서비스명, 요청한 model과 effort, 도구가 반환한 실제 model과 effort(제공되는 경우), agent/conversation ID와 단계(독립 리뷰 / 상호 검토)를 기록한다. agy의 요청 모델은 항상 `gemini-3.8-flash-high`로 기록한다. 공개 설정·호출 인자·실행 메타데이터만 사용한다. effort를 thinking token 수나 응답 길이로 추정하지 않는다. 미지정 기본값은 실제 값이 확인되지 않으면 `기본값(값 미확인)`, 과거 기록에 없으면 `미기록`으로 적는다. 양 단계의 설정이 달라지면 각각 기록한다.
+- 실행 전에 리뷰어별 AI/서비스명, 요청한 model과 effort, 도구가 반환한 실제 model과 effort(제공되는 경우), agent/conversation ID와 단계(독립 리뷰 / 상호 검토)를 기록한다. Codex 호스트 및 subagent는 `~/.codex/config.toml`의 `model`과 `model_reasoning_effort`를 확인해 기록한다(설정이 없거나 확인 불가능할 때만 `미기록`으로 표시). agy의 요청 모델은 항상 `gemini-3.8-flash-high`, 요청 effort는 `high`로 기록한다(호출 인자로 `--effort high`를 전달하며, `gemini-3.8-flash-high` 모델 자체도 high effort에 해당하므로 effort는 high로 확정 기록한다). 공개 설정·호출 인자·실행 메타데이터만 사용하며 effort를 thinking token 수나 응답 길이로 임의 추정하지 않는다. 미지정 기본값은 실제 값이 확인되지 않으면 `기본값(값 미확인)`, 과거 기록에 없으면 `미기록`으로 적는다. 양 단계의 설정이 달라지면 각각 기록한다.
 - 독립 결과가 양쪽 모두 완료되면 Codex subagent와 agy에 상대 원문·출처·동일 snapshot을 준다. 원래 담당 리뷰어의 후속 turn/conversation을 우선 사용한다. 새 실행이 필요하면 해당 리뷰어 자신의 독립 결과도 함께 주고 새 실행임을 기록한다. 진행 중인 turn에 새 요청을 겹쳐 보내지 않는다.
 - 상호 검토 요청: “상대의 지적 하나마다 동의 / 비동의 / 판단 보류를 표시하고, 관련 소스·계약의 실제 문구, 조건·영향, 재현 또는 정적 근거, 필요한 최소 실험을 제출하라. 새 근거로 자신의 원래 판단이 바뀌면 변경 전후와 이유를 명시하라. 상대 결론에 맞추거나 합의 개수를 채우지 말라.”
 - 양쪽 상호 검토를 독립적으로 받아 보존한다. 최종 보고서는 문제 제기자, 상대의 판단과 근거, 호스트 최종 판정을 구분한다. 호스트가 편집한 답변을 subagent 발언으로 귀속하지 않는다. 상호 검토는 한 차례씩 수행하고, 남은 불일치는 호스트가 근거로 판정하거나 보류한다. 자동으로 끝없는 토론을 반복하지 않는다.
@@ -37,7 +37,7 @@ Codex + agy 선택은 확인된 대상의 필요한 자료를 추가 서비스�
 
 ## 장시간 실행과 5분 diff
 
-- 실행 전에 설치된 `agy --help`에서 출력·timeout·로그 옵션을 확인한다. 지원하면 `--model gemini-3.8-flash-high --output-format stream-json --print-timeout 0`으로 시작해 turn 완료를 기다린다. 시스템 전체 agy 동시 실행 수가 3개 미만인지 사전에 확인하고 초과 시 큐에서 대기한다. `--log-file`을 지원하면 해당 실행 전용 임시 로그를 지정한다. stdout/stderr와 conversation ID, 프로세스·호스트 실행 session ID를 보존한다. 짧은 `--print-timeout 120s` 등으로 장시간 리뷰를 강제로 끊지 않는다. 사용자가 명시한 시간·비용 한도와 중단 요청은 우선한다.
+- 실행 전에 설치된 `agy --help`에서 출력·timeout·로그 옵션을 확인한다. 지원하면 `--model gemini-3.8-flash-high --effort high --output-format stream-json --print-timeout 0`으로 시작해 turn 완료를 기다린다. 시스템 전체 agy 동시 실행 수가 3개 미만인지 사전에 확인하고 초과 시 큐에서 대기한다. `--log-file`을 지원하면 해당 실행 전용 임시 로그를 지정한다. stdout/stderr와 conversation ID, 프로세스·호스트 실행 session ID를 보존한다. 짧은 `--print-timeout 120s` 등으로 장시간 리뷰를 강제로 끊지 않는다. 사용자가 명시한 시간·비용 한도와 중단 요청은 우선한다.
 - 호스트 도구의 짧은 대기 만료는 프로세스 실패가 아니다. 백그라운드 실행/session을 유지하고 짧게 poll하면서 사용자에게 진행 상태를 알린다. 시작 시 진행 스냅샷을 저장하고 이후 **5분마다 직전 5분 전 스냅샷과 diff**를 확인해 기준 스냅샷을 갱신한다. 각 스냅샷은 관찰 시각과 해당 실행의 대화·추론/도구 실행 기록, stdout/stderr의 내용·크기 또는 hash, 부분 결과를 포함한다. 지원되는 도구로 접근 가능한 기록만 사용하고 credential이나 다른 대화는 읽지 않는다.
 - **새로운 분석 내용, 파일 탐색·도구 호출/결과, 부분 finding 또는 출력 내용의 diff가 있으면 작업 중으로 판단하고 다음 5분 구간까지 계속 기다린다.** 진행이 있는 동안 총 경과 시간만으로 종료하거나 결과를 당장 반환하라는 추가 프롬프트를 보내지 않는다. 읽기 전용 리뷰에서는 소스의 `git diff`가 없어도 정상이다. 프로젝트 파일 변경 여부를 진행 기준으로 삼지 않는다. PID 생존, 경과 시간, 로그 mtime, 반복 heartbeat·동일 오류·단순 polling 행만의 변화는 실질적인 diff가 아니다.
 - print 모드의 최종 stdout이 비어 있어도 해당 실행의 stream/로그·대화 기록에서 진행을 확인한다. 접근 가능한 기록만으로 판단할 수 없으면 `진행 확인 불가`로 알린다. 첫 5분간 diff가 없으면 즉시 kill하지 말고 프로세스 종료 여부·권한 대기·연결 오류를 확인하고 한 구간 더 관찰한다. **연속 두 구간(10분) 동안 실질적인 diff가 없고 완료도 확인되지 않으면** 정체 또는 진행 확인 불가로 기록하고 해당 실행을 정상 중단한다. 부분 결과·로그를 보존하고 미완료로 보고한다. 명확한 인증/권한 오류나 프로세스의 실제 실패 종료는 즉시 실패 처리할 수 있다.

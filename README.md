@@ -15,7 +15,7 @@ Claude Code와 Codex에서 함께 사용하는 개인 스킬 모음입니다.
 
 - `serena-onboarding`은 Serena MCP, Serena CLI, 언어별 language server가 필요합니다. 실행 시 프로젝트의 `.serena/`와 `.gitignore`를 생성하거나 갱신합니다.
 - `env-setup`은 Claude Code가 설치되어 있으면 `effortless` 플러그인도 설치합니다.
-- `cross-review`는 Codex + agy에서 독립 리뷰 후 서로의 지적에 동의·비동의와 근거를 제출하고 호스트가 최종 판정합니다. agy 호출 시 429 사용량 한도 초과 방지를 위해 Gemini Flash High(`gemini-3.8-flash-high`) 모델을 강제하며, 시스템 전체 동시 실행 agy는 최대 3개로 제한합니다. 보고서는 문제 3줄·답변 10줄 이내로 요점을 먼저 표시하며, 작성 AI·model·effort를 병기하고 상세 근거는 기본으로 접습니다. agy의 최근 5분 진행 diff가 있으면 계속 대기합니다. 종료 시 최초 실행 디렉터리에 `cross-review-report-YYYYMMDD-HHMMSS.md`를 저장하고, 저장한 보고서를 다시 읽어 결과를 요약합니다.
+- `cross-review`는 Codex + agy에서 독립 리뷰 후 서로의 지적에 동의·비동의와 근거를 제출하고 호스트가 최종 판정합니다. agy 호출 시 429 사용량 한도 초과 방지를 위해 Gemini Flash High(`gemini-3.8-flash-high`, `--effort high`)를 강제하며, 시스템 전체 동시 실행 agy는 최대 3개로 제한합니다. Codex 호스트 및 서브에이전트의 model·effort는 `~/.codex/config.toml`을 참조해 보고서에 명시합니다. 보고서는 문제 3줄·답변 10줄 이내로 요점을 먼저 표시하며, 작성 AI·model·effort를 병기하고 상세 근거는 기본으로 접습니다. agy의 최근 5분 진행 diff가 있으면 계속 대기합니다. 종료 시 최초 실행 디렉터리에 `cross-review-report-YYYYMMDD-HHMMSS.md`를 저장하고, 저장한 보고서를 다시 읽어 결과를 요약합니다.
 
 ## 설치
 

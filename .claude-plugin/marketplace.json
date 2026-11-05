@@ -61,8 +61,8 @@
     {
       "name": "cross-review",
       "source": "./plugins/cross-review",
-      "description": "Choice-based scope confirmation, independent Codex/agy reviews (Gemini Flash High, max 3 agy concurrency), reciprocal evidence-based assessment, and concise reports with collapsed details.",
-      "version": "0.2.1",
+      "description": "Choice-based scope confirmation, independent Codex/agy reviews (Gemini Flash High with effort high, max 3 agy concurrency, Codex config metadata tracking), reciprocal evidence-based assessment, and concise reports with collapsed details.",
+      "version": "0.2.2",
       "author": {
         "name": "hooking001"
       },

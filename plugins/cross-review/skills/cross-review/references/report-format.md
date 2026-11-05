@@ -28,22 +28,22 @@
 - 호스트 답변을 상대 리뷰어가 작성한 것처럼 표시하지 않는다. 상호 검토가 없는 과거 보고서의 편집에서는 이를 새로 수행한 것처럼 만들지 않는다.
 - Codex only에서는 문제는 Codex 독립 리뷰어, 답변은 호스트 Codex의 판정이다. 상세 영역에서 역할·agent ID를 구분하며 agy의 동의를 만들어 넣지 않는다.
 
-아래는 형식 예시이며 모델·effort 값은 실제 실행 값으로 채운다.
+아래는 형식 예시이며 모델·effort 값은 실제 실행 값(예: Codex는 config.toml의 gpt-6.1-sol/medium, agy는 gemini-3.8-flash-high/high)으로 채운다.
 
 ```markdown
 ## 1. 잘못된 FIFO 깊이 설정에서 응답이 유실될 수 있음
 
-**문제 (agy, model: 미기록, effort: 미기록)**
+**문제 (agy, model: gemini-3.8-flash-high, effort: high)**
 
 응답 FIFO 깊이를 최대 미응답 요청 수보다 작게 설정하면, 소비자 정지 중 응답을 덮어쓸 수 있습니다.<br>
 정적 분석 결과이며 해당 설정으로 재현하지는 않았습니다.
 
-**답변 — 상대 검토 (Codex, model: 미기록, effort: 미기록)**
+**답변 — 상대 검토 (Codex, model: gpt-6.1-sol, effort: medium)**
 
 지원 구성의 결함이라는 분류에는 비동의합니다.<br>
 계약은 응답 FIFO 깊이가 최대 미응답 요청 수 이상이어야 한다고 정합니다.
 
-**답변 — 최종 판정 (Codex, model: 미기록, effort: 미기록)**
+**답변 — 최종 판정 (Codex, model: gpt-6.1-sol, effort: medium)**
 
 계약 밖 설정에 대한 방어 제안으로 분류합니다.<br>
 잘못된 설정을 시작할 때 거부하는 검사를 검토하면 됩니다.
