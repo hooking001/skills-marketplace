@@ -74,4 +74,4 @@ bash install.sh --destination /path/to/skills     # /path/to/skills/nangate45
 python3 -m unittest discover -s tests -v
 ```
 
-생성·이동·덮어쓰기 거부·체크섬·설치·정리와 실패 전달을 검사합니다. EDA 도구가 있으면 가산기, 순차 RTL, 공백 경로, 테스트 실패와 합성 실패도 실제로 실행합니다. 도구가 없으면 해당 통합 검사만 skip합니다. CI는 Linux·macOS에서 OSS CAD Suite로 실제 흐름을 실행합니다.
+생성·이동·덮어쓰기 거부·체크섬·설치·정리와 실패 전달을 로컬에서 검사합니다. EDA 도구가 있으면 가산기, 순차 RTL, 공백 경로, 테스트 실패와 합성 실패도 실제로 실행합니다. 도구가 없으면 해당 통합 검사만 skip합니다. GitHub CI는 사용하지 않습니다.

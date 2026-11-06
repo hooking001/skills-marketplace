@@ -76,7 +76,7 @@ class WorkflowTests(unittest.TestCase):
         source.write_text("module a; endmodule\n")
         listing = self.work / "rtl.f"
         listing.write_bytes(b'# comment\r\n// comment\r\n\r\n"source file.sv"')
-        self.assertEqual(rtl_flow.filelist(listing), [source])
+        self.assertEqual(rtl_flow.filelist(listing), [source.resolve()])
         listing.write_text("-f other.f\n")
         with self.assertRaises(ValueError):
             rtl_flow.filelist(listing)
