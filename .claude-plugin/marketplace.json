@@ -74,6 +74,23 @@
           "Use cross-review to identify this target, confirm its classification and reviewers, then critically review its documentation and implementation."
         ]
       }
+    },
+    {
+      "name": "nangate45",
+      "source": "./plugins/nangate45",
+      "description": "Portable Linux/macOS RTL projects, Icarus simulation, and Yosys standard-cell synthesis with Nangate45 or custom Liberty libraries.",
+      "version": "0.1.0",
+      "author": {
+        "name": "hooking001"
+      },
+      "category": "Development",
+      "interface": {
+        "displayName": "Nangate45 / Liberty RTL",
+        "shortDescription": "Portable RTL simulation and Liberty-based synthesis",
+        "defaultPrompt": [
+          "Use nangate45 to create or validate an RTL project and synthesize it with Nangate45 or a specified Liberty library."
+        ]
+      }
     }
   ]
 }

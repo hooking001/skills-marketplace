@@ -1,0 +1,9 @@
+*.vcd
+*.vvp
+*.ys
+*.log
+.DS_Store
+__pycache__/
+.rtl-flow-outputs.json
+example/*/synth/
+example/*/dump/

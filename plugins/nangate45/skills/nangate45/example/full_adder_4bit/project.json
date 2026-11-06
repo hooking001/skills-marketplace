@@ -1,0 +1,5 @@
+{
+  "top": "full_adder_4bit",
+  "tb_top": "full_adder_4bit_tb",
+  "liberty": "lib/NangateOpenCellLibrary_typical.lib"
+}

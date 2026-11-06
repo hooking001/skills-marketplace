@@ -1,0 +1,9 @@
+{
+  "base_url": "https://raw.githubusercontent.com/The-OpenROAD-Project/OpenROAD-flow-scripts",
+  "revision": "d0e5b3c13e4bb9bdbd33493d5e87656dcae66384",
+  "files": [
+    {"path": "lib/NangateOpenCellLibrary_typical.lib", "sha256": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1"},
+    {"path": "lef/NangateOpenCellLibrary.tech.lef", "sha256": "834a79295054cd4209178d1bade67c353863c47bb4b3c22ee38b862b7cec37f2"},
+    {"path": "lef/NangateOpenCellLibrary.macro.mod.lef", "sha256": "a43aea339f12a57a63497783e508ba16f3da2dc056d3247dec7d99707c2dedef"}
+  ]
+}

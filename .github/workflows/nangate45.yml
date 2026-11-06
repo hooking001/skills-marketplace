@@ -1,0 +1,44 @@
+name: Nangate45 Linux and macOS
+on:
+  push:
+    paths:
+      - 'plugins/nangate45/**'
+      - '.github/workflows/nangate45.yml'
+  pull_request:
+    paths:
+      - 'plugins/nangate45/**'
+      - '.github/workflows/nangate45.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  rtl:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            python: '3.8'
+          - os: macos-latest
+            python: '3.12'
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: plugins/nangate45/skills/nangate45
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - uses: YosysHQ/setup-oss-cad-suite@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Tool versions
+        run: |
+          python3 --version
+          yosys -V
+          iverilog -V
+          command -v vvp
+      - name: Unit and real EDA integration checks
+        run: python3 -m unittest discover -s tests -v
